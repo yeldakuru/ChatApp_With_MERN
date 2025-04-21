@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express";//Routing yapmak için
 import { signup, login, logout } from "../controllers/auth.controller.js";
 
 

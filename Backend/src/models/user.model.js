@@ -14,14 +14,18 @@ const userSchema = new mongoose.Schema(
         password: {
             type: String,
             required: true,
-            minlenght: 6,
+            minlength: 6,
         },
         profilePic: {
             type: String,
             default: "",
         },
     },
-    { timeseries: true }
+    { timestamps: true }
 );
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);//artık MongoDB’de users koleksiyonuna kayıt ekleyebilir
 export default User;
+
+//Kullanıcının sahip olacağı alanları (email, ad, şifre vs.) tanımlayan bir şema oluşturduk ve bunu User adında bir mongoose modeline dönüştürdük.
+//Bu model sayesinde artık MongoDB’ye kullanıcı ekleyebilir, silebilir, güncelleyebiliriz.
+
