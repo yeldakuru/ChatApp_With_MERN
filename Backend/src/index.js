@@ -3,12 +3,14 @@ import express from "express"; //Sunucu oluşturmak için kullanılan Node.js fr
 import dotenv from "dotenv"; //.env dosyasındaki ortam değişkenlerini kullanmamıza yarar.
 import authRoutes from "./routes/auth.route.js";
 import { connectDB } from "./lib/db.js";
+import cookieParser from "cookie-parser"
 
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
 app.use(express.json());
-app.use("/api/auth", authRoutes)
+app.user(cookieParser());
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
     console.log("Server is running on PORT: " + PORT);//Belirlenen port üzerinden sunucu çalıştırılır.
