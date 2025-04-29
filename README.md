@@ -1,14 +1,20 @@
-frontend backend dosyalarını açtık
-frontende react kurulumu yaptık
+We created the frontend and backend folders.
+We installed React on the frontend using:
 `` npm create vite@latest projectname``
 
-backende node.jsin tanıyabileceği package.json dosyasını eklemek için 
+To add a package.json file that Node.js can recognize in the backend, we used:
 `` npm init -y ``
 
-Bu komut, JWT ile kullanıcı girişi yapılabilen, MongoDB'ye veri kaydedebilen, şifreleri güvenli saklayan, çerezlerle çalışan, gerçek zamanlı veri gönderebilen (socket.io), ve frontend ile sorunsuz iletişim kuran (CORS) bir Node.js + Express backend API'si oluşturmak için gerekli temel paketleri yükler.
+This command installs the essential packages to build a Node.js + Express backend API that:
+Allows user authentication with JWT,
+Stores data in MongoDB ,
+Saves passwords securely,
+Works with cookies,
+Supports real-time data transmission (with socket.io),
+Communicates smoothly with the frontend (via CORS)
 `` npm i express mongoose dotenv jsonwebtoken bcryptjs cookie-parser cloudinary socket.io ``
 
-nodemon, Node.js uygulamanı sen dosyada bir değişiklik yaptığında otomatik olarak yeniden başlatır.
+We installed nodemon to automatically restart the Node.js app when files are changed:
 `` npm i nodemon -D ``
 
 
