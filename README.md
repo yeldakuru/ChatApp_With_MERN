@@ -35,3 +35,6 @@ install axios
 
 To enable Cross-Origin Resource Sharing (CORS), allowing the frontend (e.g., React running on a different port) to communicate with the backend API securely.
 `npm install cors`
+
+for icon lib Lucide
+`npm i lucide-react`
