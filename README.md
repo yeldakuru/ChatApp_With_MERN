@@ -18,3 +18,20 @@ We installed nodemon to automatically restart the Node.js app when files are cha
 `` npm i nodemon -D ``
 
 
+To handle client-side routing and enable navigation between different pages in a Single Page Application (SPA).
+`npm install react-router-dom`
+
+To display modern and user-friendly toast notifications for actions like success, error, or information messages.
+`npm install react-hot-toast`
+
+Install Tailwind CSS
+`npm install tailwindcss @tailwindcss/vite`
+
+Install daisyUI as a Node package:
+`npm i -D daisyui@latest`
+
+install axios
+`$ npm i axios zustand`
+
+To enable Cross-Origin Resource Sharing (CORS), allowing the frontend (e.g., React running on a different port) to communicate with the backend API securely.
+`npm install cors`
