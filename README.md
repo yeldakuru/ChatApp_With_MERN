@@ -38,3 +38,7 @@ To enable Cross-Origin Resource Sharing (CORS), allowing the frontend (e.g., Rea
 
 for icon lib Lucide
 `npm i lucide-react`
+
+Socket.io
+`npm i socket.io-client`
+
