@@ -1,28 +1,42 @@
-
-import express from "express"; //Sunucu oluşturmak için kullanılan Node.js framework’ü.
-import dotenv from "dotenv"; //.env dosyasındaki ortam değişkenlerini kullanmamıza yarar.
-import authRoutes from "./routes/auth.route.js";
-import { connectDB } from "./lib/db.js";
-import cookieParser from "cookie-parser"
-import messageRoutes from "./routes/message.route.js";
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import cors from "cors";
-dotenv.config(); //.env e erişir
-const app = express();
+
+import path from "path";
+
+import { connectDB } from "./lib/db.js";
+
+import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
+import { app, server } from "./lib/socket.js";
+
+dotenv.config();
 
 const PORT = process.env.PORT;
-app.use(express.json());//express ile jssona eriş ve json formatında veri gönder
-app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Middleware to parse URL-encoded request bodies
+const __dirname = path.resolve();
+
+app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: "http://localhost:5173", //Frontend uygulamasının adresi
-    credentials: true,
-}));
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true,
+    })
+);
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.listen(PORT, () => {
-    console.log("Server is running on PORT: " + PORT);//Belirlenen port üzerinden sunucu çalıştırılır.
-    connectDB()
-});
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-//Express ile bir backend sunucusu kurduk, auth route'larını tanıttık, ortam değişkenleri okundu ve sunucu başlatıldığında MongoDB’ye bağlandık.
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    });
+}
+
+server.listen(PORT, () => {
+    console.log("server is running on PORT:" + PORT);
+    connectDB();
+});
